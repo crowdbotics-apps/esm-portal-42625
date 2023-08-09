@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, StyleSheet, Image, Pressable, FlatList } from "react-native";
+import { Text, View, StyleSheet, Image, Pressable, FlatList, SafeAreaView } from "react-native";
 
 const ProductListing = () => {
   const [products, setProducts] = useState([]);
@@ -7,24 +7,36 @@ const ProductListing = () => {
   useEffect(() => {
     setProducts([{
       id: 1,
-      title: "Dish name",
+      title: "Package 1",
+      price: "$10 - $15",
       count: 1,
-      image: require("./assets/productImage.png")
+      image: {
+        uri: "https://tinyurl.com/42evm3m3"
+      }
     }, {
       id: 2,
-      title: "Dish name",
+      title: "Package 2",
+      price: "$20 - $25",
       count: 1,
-      image: require("./assets/productImage.png")
+      image: {
+        uri: "https://tinyurl.com/42evm3m3"
+      }
     }, {
       id: 3,
-      title: "Dish name",
+      title: "Package 3",
+      price: "$30 - $35",
       count: 1,
-      image: require("./assets/productImage.png")
+      image: {
+        uri: "https://tinyurl.com/42evm3m3"
+      }
     }, {
       id: 4,
-      title: "Dish name",
+      title: "Package 4",
+      price: "$40 - $45",
       count: 1,
-      image: require("./assets/productImage.png")
+      image: {
+        uri: "https://tinyurl.com/42evm3m3"
+      }
     }]);
   }, []);
 
@@ -54,7 +66,7 @@ const ProductListing = () => {
     setProducts(newProducts);
   };
 
-  return <View style={styles.container}>
+  return <SafeAreaView style={styles.container}>
       <FlatList data={products} renderItem={({
       item
     }) => <View style={styles.productContainer}>
@@ -64,30 +76,32 @@ const ProductListing = () => {
             </View>
             <View style={styles.flexRow}>
               <Text style={styles.productName}>{item.title}</Text>
+              <Text style={styles.price}>{item.price}</Text>
               <View style={styles.flexRow}>
                 <Text style={styles.counterText}>
                   {item.count} item{item.count > 1 && "s"}
                 </Text>
                 <Pressable onPress={() => handleCountChange("decrease", item)}>
-                  <Image style={styles.icon} source={require("./assets/decrementIcon.png")} />
+                  <Image style={styles.icon} source={{
+              uri: "https://tinyurl.com/42evm3m3"
+            }} />
                 </Pressable>
                 <Pressable onPress={() => handleCountChange("increase", item)}>
-                  <Image style={styles.icon} source={require("./assets/incrementIcon.png")} />
+                  <Image style={styles.icon} source={{
+              uri: "https://tinyurl.com/42evm3m3"
+            }} />
                 </Pressable>
               </View>
             </View>
             <Button buttonText="Order" style={styles.button} hideShadow />
           </View>} />
-    </View>;
+    </SafeAreaView>;
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff"
-  },
-  heading: {
-    fontSize: 20
   },
   productContainer: {
     paddingHorizontal: 20,
@@ -132,6 +146,11 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     flex: 1
   },
+  price: {
+    fontSize: 18,
+    color: "#12D790",
+    marginRight: 10
+  },
   counterText: {
     fontSize: 18,
     color: "#12D790"
@@ -146,7 +165,6 @@ const styles = StyleSheet.create({
     marginVertical: 15
   }
 });
-export default ProductListing;
 
 const Button = params => {
   const backgroundColor = params.backgroundColor || "#000";
@@ -230,3 +248,4 @@ const radioStyles = StyleSheet.create({
     backgroundColor: "#000"
   }
 });
+export default ProductListing;
