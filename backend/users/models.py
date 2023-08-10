@@ -21,6 +21,6 @@ class User(AbstractUser):
     name = models.CharField(null=True,blank=True,max_length=255,)
     email = models.EmailField(null=True,blank=True,max_length=254,)
     phone_number = models.CharField(null=True,blank=True,max_length=255,)
-    listings = models.ManyToManyField("listing.Listing",blank=True,related_name="user_listings",null=True,)
+    listings = models.ManyToManyField("listing.Listing",blank=True,related_name="user_listings",)
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})
