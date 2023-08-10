@@ -7,8 +7,17 @@ class Service(models.Model):
     duration = models.DurationField()
 class Package(models.Model):
     'Generated Model'
-    services = models.ManyToManyField("service.Service",related_name="package_services",)
     title = models.BigIntegerField(null=True,blank=True,)
     price = models.FloatField(null=True,blank=True,)
+    services = models.ForeignKey("service.Service",on_delete=models.CASCADE,null=True,blank=True,related_name="package_services",)
+    duration = models.DurationField(null=True,blank=True,)
+class Booking(models.Model):
+    'Generated Model'
+    date = models.DateField(blank=True,)
+    start_time = models.TimeField(blank=True,)
+    end_time = models.TimeField(null=True,blank=True,)
+    packages = models.ForeignKey("service.Package",on_delete=models.CASCADE,null=True,blank=True,related_name="booking_packages",)
+    services = models.ForeignKey("service.Service",on_delete=models.CASCADE,null=True,blank=True,related_name="booking_services",)
+    listing = models.OneToOneField("listing.Listing",on_delete=models.CASCADE,null=True,blank=True,related_name="booking_listing",)
 
 # Create your models here.
