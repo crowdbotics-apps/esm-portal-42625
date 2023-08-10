@@ -19,7 +19,8 @@ class User(AbstractUser):
     everything that relates with an `User` is represented by this model.
     """
     name = models.CharField(null=True,blank=True,max_length=255,)
-    email = models.EmailField(max_length=254,null=True,blank=True,)
-    phone_number = models.CharField(max_length=255,null=True,blank=True,)
+    email = models.EmailField(null=True,blank=True,max_length=254,)
+    phone_number = models.CharField(null=True,blank=True,max_length=255,)
+    listings = models.ManyToManyField("listing.Listing",blank=True,related_name="user_listings",null=True,)
     def get_absolute_url(self):
         return reverse('users:detail', kwargs={'username': self.username})
