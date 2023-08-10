@@ -8,6 +8,24 @@ function api_docs_schema_retrieve(payload) {
     params: { lang: payload.lang }
   })
 }
+function api_v1_booking_list(payload) {
+  return esmportalAPI.get(`/api/v1/booking/`)
+}
+function api_v1_booking_create(payload) {
+  return esmportalAPI.post(`/api/v1/booking/`, payload.data)
+}
+function api_v1_booking_retrieve(payload) {
+  return esmportalAPI.get(`/api/v1/booking/${payload.id}/`)
+}
+function api_v1_booking_update(payload) {
+  return esmportalAPI.put(`/api/v1/booking/${payload.id}/`, payload.data)
+}
+function api_v1_booking_partial_update(payload) {
+  return esmportalAPI.patch(`/api/v1/booking/${payload.id}/`, payload.data)
+}
+function api_v1_booking_destroy(payload) {
+  return esmportalAPI.delete(`/api/v1/booking/${payload.id}/`)
+}
 function api_v1_listing_list(payload) {
   return esmportalAPI.get(`/api/v1/listing/`)
 }
@@ -124,6 +142,12 @@ function rest_auth_user_partial_update(payload) {
 }
 export const apiService = {
   api_docs_schema_retrieve,
+  api_v1_booking_list,
+  api_v1_booking_create,
+  api_v1_booking_retrieve,
+  api_v1_booking_update,
+  api_v1_booking_partial_update,
+  api_v1_booking_destroy,
   api_v1_listing_list,
   api_v1_listing_create,
   api_v1_listing_retrieve,
