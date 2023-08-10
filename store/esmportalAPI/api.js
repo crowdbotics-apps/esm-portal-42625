@@ -11,6 +11,24 @@ function api_docs_schema_retrieve(payload) {
 function api_v1_login_create(payload) {
   return esmportalAPI.post(`/api/v1/login/`, payload.data)
 }
+function api_v1_photo_list(payload) {
+  return esmportalAPI.get(`/api/v1/photo/`)
+}
+function api_v1_photo_create(payload) {
+  return esmportalAPI.post(`/api/v1/photo/`, payload.data)
+}
+function api_v1_photo_retrieve(payload) {
+  return esmportalAPI.get(`/api/v1/photo/${payload.id}/`)
+}
+function api_v1_photo_update(payload) {
+  return esmportalAPI.put(`/api/v1/photo/${payload.id}/`, payload.data)
+}
+function api_v1_photo_partial_update(payload) {
+  return esmportalAPI.patch(`/api/v1/photo/${payload.id}/`, payload.data)
+}
+function api_v1_photo_destroy(payload) {
+  return esmportalAPI.delete(`/api/v1/photo/${payload.id}/`)
+}
 function api_v1_signup_create(payload) {
   return esmportalAPI.post(`/api/v1/signup/`, payload.data)
 }
@@ -53,6 +71,12 @@ function rest_auth_user_partial_update(payload) {
 export const apiService = {
   api_docs_schema_retrieve,
   api_v1_login_create,
+  api_v1_photo_list,
+  api_v1_photo_create,
+  api_v1_photo_retrieve,
+  api_v1_photo_update,
+  api_v1_photo_partial_update,
+  api_v1_photo_destroy,
   api_v1_signup_create,
   rest_auth_login_create,
   rest_auth_logout_retrieve,
