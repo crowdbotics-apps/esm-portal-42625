@@ -29,6 +29,24 @@ function api_v1_listing_destroy(payload) {
 function api_v1_login_create(payload) {
   return esmportalAPI.post(`/api/v1/login/`, payload.data)
 }
+function api_v1_package_list(payload) {
+  return esmportalAPI.get(`/api/v1/package/`)
+}
+function api_v1_package_create(payload) {
+  return esmportalAPI.post(`/api/v1/package/`, payload.data)
+}
+function api_v1_package_retrieve(payload) {
+  return esmportalAPI.get(`/api/v1/package/${payload.id}/`)
+}
+function api_v1_package_update(payload) {
+  return esmportalAPI.put(`/api/v1/package/${payload.id}/`, payload.data)
+}
+function api_v1_package_partial_update(payload) {
+  return esmportalAPI.patch(`/api/v1/package/${payload.id}/`, payload.data)
+}
+function api_v1_package_destroy(payload) {
+  return esmportalAPI.delete(`/api/v1/package/${payload.id}/`)
+}
 function api_v1_photo_list(payload) {
   return esmportalAPI.get(`/api/v1/photo/`)
 }
@@ -46,6 +64,24 @@ function api_v1_photo_partial_update(payload) {
 }
 function api_v1_photo_destroy(payload) {
   return esmportalAPI.delete(`/api/v1/photo/${payload.id}/`)
+}
+function api_v1_service_list(payload) {
+  return esmportalAPI.get(`/api/v1/service/`)
+}
+function api_v1_service_create(payload) {
+  return esmportalAPI.post(`/api/v1/service/`, payload.data)
+}
+function api_v1_service_retrieve(payload) {
+  return esmportalAPI.get(`/api/v1/service/${payload.id}/`)
+}
+function api_v1_service_update(payload) {
+  return esmportalAPI.put(`/api/v1/service/${payload.id}/`, payload.data)
+}
+function api_v1_service_partial_update(payload) {
+  return esmportalAPI.patch(`/api/v1/service/${payload.id}/`, payload.data)
+}
+function api_v1_service_destroy(payload) {
+  return esmportalAPI.delete(`/api/v1/service/${payload.id}/`)
 }
 function api_v1_signup_create(payload) {
   return esmportalAPI.post(`/api/v1/signup/`, payload.data)
@@ -95,12 +131,24 @@ export const apiService = {
   api_v1_listing_partial_update,
   api_v1_listing_destroy,
   api_v1_login_create,
+  api_v1_package_list,
+  api_v1_package_create,
+  api_v1_package_retrieve,
+  api_v1_package_update,
+  api_v1_package_partial_update,
+  api_v1_package_destroy,
   api_v1_photo_list,
   api_v1_photo_create,
   api_v1_photo_retrieve,
   api_v1_photo_update,
   api_v1_photo_partial_update,
   api_v1_photo_destroy,
+  api_v1_service_list,
+  api_v1_service_create,
+  api_v1_service_retrieve,
+  api_v1_service_update,
+  api_v1_service_partial_update,
+  api_v1_service_destroy,
   api_v1_signup_create,
   rest_auth_login_create,
   rest_auth_logout_retrieve,
