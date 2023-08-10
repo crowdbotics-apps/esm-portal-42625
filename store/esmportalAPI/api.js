@@ -8,6 +8,24 @@ function api_docs_schema_retrieve(payload) {
     params: { lang: payload.lang }
   })
 }
+function api_v1_listing_list(payload) {
+  return esmportalAPI.get(`/api/v1/listing/`)
+}
+function api_v1_listing_create(payload) {
+  return esmportalAPI.post(`/api/v1/listing/`, payload.data)
+}
+function api_v1_listing_retrieve(payload) {
+  return esmportalAPI.get(`/api/v1/listing/${payload.id}/`)
+}
+function api_v1_listing_update(payload) {
+  return esmportalAPI.put(`/api/v1/listing/${payload.id}/`, payload.data)
+}
+function api_v1_listing_partial_update(payload) {
+  return esmportalAPI.patch(`/api/v1/listing/${payload.id}/`, payload.data)
+}
+function api_v1_listing_destroy(payload) {
+  return esmportalAPI.delete(`/api/v1/listing/${payload.id}/`)
+}
 function api_v1_login_create(payload) {
   return esmportalAPI.post(`/api/v1/login/`, payload.data)
 }
@@ -70,6 +88,12 @@ function rest_auth_user_partial_update(payload) {
 }
 export const apiService = {
   api_docs_schema_retrieve,
+  api_v1_listing_list,
+  api_v1_listing_create,
+  api_v1_listing_retrieve,
+  api_v1_listing_update,
+  api_v1_listing_partial_update,
+  api_v1_listing_destroy,
   api_v1_login_create,
   api_v1_photo_list,
   api_v1_photo_create,
