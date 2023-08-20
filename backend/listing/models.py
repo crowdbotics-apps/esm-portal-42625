@@ -6,7 +6,7 @@ class Photo(models.Model):
     title = models.CharField(max_length=255,)
 class Listing(models.Model):
     'Generated Model'
-    address = models.CharField(max_length=255,blank=True,)
-    photos = models.ForeignKey("listing.Photo",on_delete=models.CASCADE,null=True,blank=True,related_name="listing_photos",)
+    address = models.CharField(blank=True,max_length=255,)
+    photos = models.ForeignKey("listing.Photo",null=True,blank=True,on_delete=models.CASCADE,related_name="listing_photos",)
 
 # Create your models here.
